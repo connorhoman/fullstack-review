@@ -12,7 +12,15 @@ class App extends React.Component {
     }
 
   }
-
+  componentDidMount() {
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:1128/repos',
+      dataType: 'JSON',
+      success: (data) => {this.setState({repos: data})},
+      error: (err) => {console.log(err)}
+    })
+  }
   search (term) {
     $.ajax({
       type: 'POST',

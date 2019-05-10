@@ -1,7 +1,8 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-const getReposByUsername = require('../helpers/github.js');
-const save = require('../database/index');
+const helpers = require('../helpers/github.js');
+const db = require('../database/index');
+
 
 let app = express();
 
@@ -13,12 +14,12 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.post('/repos', function (req, res) {
   console.log('Receieved POST Request');
-  getReposByUsername.getReposByUsername(req.body.term, (err, data) => {
+  helpers.getReposByUsername(req.body.term, (err, data) => {
     if (err) {
       console.log('User not found');
     } else {
       for (var i = 0; i < data.length; i++) {
-        save.save(data[i], (err) => {
+        db.save(data[i], (err) => {
           if (err) {
             console.log(err);
             res.status(200);
@@ -35,8 +36,7 @@ app.post('/repos', function (req, res) {
 });
 
 app.get('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should send back the top 25 repos
+  console.log('Recieved GET request');
   
 });
 
