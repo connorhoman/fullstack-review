@@ -17,15 +17,19 @@ app.post('/repos', function (req, res) {
     if (err) {
       console.log('User not found');
     } else {
-      save.save(data, (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log('Succesfully posted to Database');
-          res.status(200);
-          res.send();
-        }
-      });
+      for (var i = 0; i < data.length; i++) {
+        save.save(data[i], (err) => {
+          if (err) {
+            console.log(err);
+            res.status(200);
+            res.send();
+          } else {
+            console.log('Succesfully posted to Database');
+            res.status(200);
+            res.send();
+          }
+        });
+      }
     }
   });
 });
