@@ -22,17 +22,18 @@ app.post('/repos', function (req, res) {
           console.log(err);
         } else {
           console.log('Succesfully posted to Database');
+          res.status(200);
+          res.send();
         }
       });
     }
   });
-  res.status(200);
-  res.send();
 });
 
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
+  
 });
 
 let port = 1128;
