@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = new mongoose.Schema({
-  repo = Object,
-  repoId = Number
+  repos: Array,
+  repoId: Number
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (inputRepo) => {
+let save = (inputRepos) => {
   var savedRepo = new Repo;
-  savedRepo.repo = inputRepo;
-  savedRepo.repoId = input.Id;
+  savedRepo.repos = inputRepos;
+  savedRepo.repoId = inputRepos[0].Id;
   savedRepo.save();
 }
 
