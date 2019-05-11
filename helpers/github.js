@@ -12,6 +12,7 @@ let getReposByUsername = (username, callback) => {
 
   request(options, function(err, res, body) {
     var json = JSON.parse(body);
+    console.log(json.message);
     if (json.message === 'Not Found') {
       callback('User not Found', null);
     } else {

@@ -16,8 +16,8 @@ app.post('/repos', function (req, res) {
   helpers.getReposByUsername(req.body.term, (err, data) => {
     if (err) {
       console.log(err);
-      // send error to client? Client not calling correct callback
     } else {
+      console.log('Found user, sending to Database')
       for (var i = 0; i < data.length; i++) {
         db.save(data[i], (err) => {
           if (err) {
@@ -26,7 +26,7 @@ app.post('/repos', function (req, res) {
             console.log('Succesfully posted to Database');
           }
         });
-        // Not sending correctly?? See above
+        
         res.status(200);
         res.send();
       }
@@ -39,6 +39,7 @@ app.get('/repos', function (req, res) {
   db.findRepos((err, data) => {
     if (err) {
       console.log(err)
+      // send error down?
     } else {
       console.log('Read repos in Database')
       var repoArray = [];

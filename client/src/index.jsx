@@ -29,7 +29,7 @@ class App extends React.Component {
       data: {term},
       dataType: 'JSON',
       success: () => {console.log(`${term} was searched`)},
-      error: () => {console.log('err')}
+      error: (err) => {console.log(err)}
       // err is being send on successful? Nothing on failure?
     });
     // fix asynchronous success callback in previous POST request, and then i can do GET request
