@@ -46,13 +46,14 @@ class App extends React.Component {
           error: (err) => {console.log(err)}
         });
       }
-      // error callback is being called on both successful and unsuccessful POST requests
+      // error callback is being called on both successful and unsuccessful POST requests?
     });
   }
 
   render () {
     return (<div>
       <h1>Github Fetcher</h1>
+      <p>by Connor Homan</p>
       <RepoList repos={this.state.repos}/>
       <Search onSearch={this.search.bind(this)}/>
     </div>)
