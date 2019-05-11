@@ -10,8 +10,8 @@ class App extends React.Component {
     this.state = { 
       repos: []
     }
-
   }
+
   componentDidMount() {
     $.ajax({
       type: 'GET',
@@ -21,6 +21,7 @@ class App extends React.Component {
       error: (err) => {console.log(err)}
     })
   }
+  
   search (term) {
     $.ajax({
       type: 'POST',
