@@ -43,8 +43,9 @@ app.get('/repos', function (req, res) {
       var repoArray = [];
       for (var i = 0; i < data.length; i++) {
         repoArray.push(data[i]._doc);
-        res.send(repoArray);
+        console.log(repoArray);
       }
+      res.send(repoArray);
     }
   });
 });

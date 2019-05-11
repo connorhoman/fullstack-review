@@ -33,8 +33,8 @@ let findRepos = (callback) => {
   Repo.find().limit(25)
     .then(function(data) {
       callback(null, data);
-    }
-  )}
+  }
+)}
 
 module.exports.findRepos = findRepos;
 module.exports.save = save;
