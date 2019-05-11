@@ -28,7 +28,8 @@ class App extends React.Component {
       data: {term},
       dataType: 'JSON',
       success: () => {console.log(`${term} was searched`)},
-      error: (err) => {console.log(err)}
+      error: () => {console.log('err')}
+      // err is being send on successful? Nothing on failure?
     })
   }
 
