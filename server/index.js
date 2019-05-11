@@ -16,7 +16,7 @@ app.post('/repos', function (req, res) {
   helpers.getReposByUsername(req.body.term, (err, data) => {
     if (err) {
       console.log(err);
-      // send error to client
+      // send error to client? Client not calling correct callback
     } else {
       for (var i = 0; i < data.length; i++) {
         db.save(data[i], (err) => {
@@ -26,6 +26,7 @@ app.post('/repos', function (req, res) {
             console.log('Succesfully posted to Database');
           }
         });
+        // Not sending correctly?? See above
         res.status(200);
         res.send();
       }
