@@ -1,4 +1,28 @@
 .repo {
-    border: 5px solid black;
-    width: 500px
+  border: 5px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+.repoList {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%
+}
+
+.search {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%
 }

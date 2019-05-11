@@ -8,6 +8,7 @@ let repoSchema = new mongoose.Schema({
   url: String,
   description: String,
   forks: Number,
+  avatar: String
 });
 let Repo = mongoose.model('Repo', repoSchema);
 
@@ -22,8 +23,9 @@ let save = (repo, callback) => {
     savedRepo.url = repo.url;
     savedRepo.description = repo.description;
     savedRepo.forks = repo.forks_count;
-    savedRepo.updateOne({upsert: true});
-    // change to Repo and pass in savedRepo
+    savedRepo.avatar = repo.owner.avatar_url;
+    console.log(repo.owner.avatar_url);
+    savedRepo.save();
     callback(null, 'Successfully added Repo to Database');
   }
 }

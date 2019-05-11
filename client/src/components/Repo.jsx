@@ -2,6 +2,7 @@ import React from 'react';
 
 const Repo = (props) => (
   <div className='repo'>
+    <img src={`${props.props.avatar}`}></img>
     <h1><a href={`https://www.github.com/${props.props.owner}/${props.props.name}`}>{`${props.props.name}`}</a></h1>
     <h2>By:<a href={`https://www.github.com/${props.props.owner}`}> {`${props.props.owner}`}</a></h2>
     <div>

@@ -52,7 +52,7 @@ class App extends React.Component {
 
   render () {
     return (<div>
-      <h1>Github Fetcher</h1>
+      <h1>GitHub Repo Fetcher</h1>
       <p>by Connor Homan</p>
       <br></br>
       <Search onSearch={this.search.bind(this)}/>
