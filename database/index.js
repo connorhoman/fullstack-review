@@ -22,7 +22,8 @@ let save = (repo, callback) => {
     savedRepo.url = repo.url;
     savedRepo.description = repo.description;
     savedRepo.forks = repo.forks_count;
-    savedRepo.save();
+    savedRepo.updateOne({upsert: true});
+    // change to Repo and pass in savedRepo
     callback(null, 'Successfully added Repo to Database');
   }
 }
