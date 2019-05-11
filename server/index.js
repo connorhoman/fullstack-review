@@ -26,7 +26,7 @@ app.post('/repos', function (req, res) {
           }
         });
         res.status(202);
-        res.send();
+        res.end();
       }
     }
   });
