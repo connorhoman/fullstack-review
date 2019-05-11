@@ -11,11 +11,10 @@ let repoSchema = new mongoose.Schema({
 });
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (repo) => {
+let save = (repo, callback) => {
   if (repo.message === 'Not Found') {
-    console.log('Not Found on GitHub');
+    callback('Not Found on GitHub', null);
   } else {
-    console.log('Added repo(s) to Database')
     var savedRepo = new Repo;
     savedRepo.id = repo.id;
     savedRepo.name = repo.name;
@@ -24,6 +23,7 @@ let save = (repo) => {
     savedRepo.description = repo.description;
     savedRepo.forks = repo.forks_count;
     savedRepo.save();
+    callback(null, 'Successfully added Repo to Database');
   }
 }
 

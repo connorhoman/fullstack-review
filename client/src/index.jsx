@@ -28,17 +28,25 @@ class App extends React.Component {
       url: 'http://localhost:1128/repos',
       data: {term},
       dataType: 'JSON',
-      success: () => {console.log(`${term} was searched`)},
-      error: (err) => {console.log(err)}
-      // err is being send on successful? Nothing on failure?
-    });
-    // fix asynchronous success callback in previous POST request, and then i can do GET request
-    $.ajax({
-      type: 'GET',
-      url: 'http://localhost:1128/repos',
-      dataType: 'JSON',
-      success: (data) => {this.setState({repos:data})},
-      error: (err) => {console.log(err)}
+      success: (data) => {
+          $.ajax({
+          type: 'GET',
+          url: 'http://localhost:1128/repos',
+          dataType: 'JSON',
+          success: (data) => {this.setState({repos:data})},
+          error: (err) => {console.log(err)}
+        });
+      },
+      error: (err) => {
+          $.ajax({
+          type: 'GET',
+          url: 'http://localhost:1128/repos',
+          dataType: 'JSON',
+          success: (data) => {this.setState({repos:data})},
+          error: (err) => {console.log(err)}
+        });
+      }
+      // error callback is being called on both successful and unsuccessful POST requests
     });
   }
 

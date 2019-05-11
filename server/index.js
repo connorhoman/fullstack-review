@@ -12,22 +12,20 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.post('/repos', function (req, res) {
-  console.log('Receieved POST Request');
   helpers.getReposByUsername(req.body.term, (err, data) => {
     if (err) {
-      console.log(err);
+      res.status(404);
+      res.end(err);
     } else {
-      console.log('Found user, sending to Database')
       for (var i = 0; i < data.length; i++) {
-        db.save(data[i], (err) => {
+        db.save(data[i], (err, success) => {
           if (err) {
             console.log(err); 
           } else {
-            console.log('Succesfully posted to Database');
+            console.log(success);
           }
         });
-        
-        res.status(200);
+        res.status(202);
         res.send();
       }
     }
@@ -35,18 +33,16 @@ app.post('/repos', function (req, res) {
 });
 
 app.get('/repos', function (req, res) {
-  console.log('Recieved GET request');
   db.findRepos((err, data) => {
     if (err) {
-      console.log(err)
-      // send error down?
+      res.status(404);
+      res.send(err);
     } else {
-      console.log('Read repos in Database')
       var repoArray = [];
       for (var i = 0; i < data.length; i++) {
         repoArray.push(data[i]._doc);
       }
-      console.log('Sent response to Client')
+      res.status(200);
       res.send(repoArray);
     }
   });
