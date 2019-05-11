@@ -20,15 +20,13 @@ app.post('/repos', function (req, res) {
       for (var i = 0; i < data.length; i++) {
         db.save(data[i], (err) => {
           if (err) {
-            console.log(err);
-            res.status(200);
-            res.send();
+            console.log(err); 
           } else {
             console.log('Succesfully posted to Database');
-            res.status(200);
-            res.send();
           }
         });
+        res.status(200);
+        res.send();
       }
     }
   });
