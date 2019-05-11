@@ -31,9 +31,9 @@ let save = (repo) => {
 
 let findRepos = (callback) => {
   Repo.find().limit(25)
-  .then(function(data) {
-    callback(null, data);
-  }
+    .then(function(data) {
+      callback(null, data);
+    }
   )}
 
 module.exports.findRepos = findRepos;
