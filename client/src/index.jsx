@@ -32,6 +32,14 @@ class App extends React.Component {
       error: () => {console.log('err')}
       // err is being send on successful? Nothing on failure?
     });
+    // fix asynchronous success callback in previous POST request, and then i can do GET request
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:1128/repos',
+      dataType: 'JSON',
+      success: (data) => {this.setState({repos:data})},
+      error: (err) => {console.log(err)}
+    });
   }
 
   render () {
