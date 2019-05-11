@@ -19,9 +19,9 @@ class App extends React.Component {
       dataType: 'JSON',
       success: (data) => {this.setState({repos:data})},
       error: (err) => {console.log(err)}
-    })
+    });
   }
-  
+
   search (term) {
     $.ajax({
       type: 'POST',
@@ -31,7 +31,7 @@ class App extends React.Component {
       success: () => {console.log(`${term} was searched`)},
       error: () => {console.log('err')}
       // err is being send on successful? Nothing on failure?
-    })
+    });
   }
 
   render () {
