@@ -23,7 +23,7 @@ class Search extends React.Component {
   render() {
     return (
     <div className='search'>
-      <div className='search'>Enter a github username:</div> 
+      <div className='search'>Enter a GitHub username:</div> 
       <input className='search' value={this.state.terms} onChange={this.onChange}/>       
       <button className='search' onClick={this.search}> Add Repos </button>
     </div>) 
