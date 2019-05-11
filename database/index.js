@@ -30,7 +30,7 @@ let save = (repo) => {
 }
 
 let findRepos = (callback) => {
-  Repo.find()
+  Repo.find().limit(25)
   .then(function(data) {
     callback(null, data);
   }
