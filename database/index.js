@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fetcher');
 
+
 let repoSchema = new mongoose.Schema({
   id: Number,
   name: String,
@@ -28,5 +29,12 @@ let save = (repo) => {
   }
 }
 
+let findRepos = (callback) => {
+  Repo.find()
+  .then(function(data) {
+    callback(null, data);
+  }
+  )}
 
+module.exports.findRepos = findRepos;
 module.exports.save = save;

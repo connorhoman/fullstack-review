@@ -3,7 +3,6 @@ const express = require('express');
 const helpers = require('../helpers/github.js');
 const db = require('../database/index');
 
-
 let app = express();
 
 app.use(bodyParser());
@@ -37,7 +36,17 @@ app.post('/repos', function (req, res) {
 
 app.get('/repos', function (req, res) {
   console.log('Recieved GET request');
-  
+  db.findRepos((err, data) => {
+    if (err) {
+      console.log(err)
+    } else {
+      var repoArray = [];
+      for (var i = 0; i < data.length; i++) {
+        repoArray.push(data[i]._doc);
+        res.send(repoArray);
+      }
+    }
+  });
 });
 
 let port = 1128;

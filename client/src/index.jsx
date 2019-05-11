@@ -17,7 +17,7 @@ class App extends React.Component {
       type: 'GET',
       url: 'http://localhost:1128/repos',
       dataType: 'JSON',
-      success: (data) => {this.setState({repos: data})},
+      success: (data) => {console.log(data)},
       error: (err) => {console.log(err)}
     })
   }
