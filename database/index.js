@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = new mongoose.Schema({
-  id: Number,
+  id: {type: String, unique: true},
   name: String,
   owner: String,
   url: String,
@@ -24,7 +24,6 @@ let save = (repo, callback) => {
     savedRepo.description = repo.description;
     savedRepo.forks = repo.forks_count;
     savedRepo.avatar = repo.owner.avatar_url;
-    console.log(repo.owner.avatar_url);
     savedRepo.save();
     callback(null, 'Successfully added Repo to Database');
   }
