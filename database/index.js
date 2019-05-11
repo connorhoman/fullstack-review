@@ -28,7 +28,7 @@ let save = (repo, callback) => {
 }
 
 let findRepos = (callback) => {
-  Repo.find().limit(25)
+  Repo.find().sort({forks: -1}).limit(25)
     .then(function(data) {
       callback(null, data);
   });
