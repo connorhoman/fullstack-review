@@ -28,7 +28,7 @@ class App extends React.Component {
       url: 'http://localhost:1128/repos',
       data: {term},
       dataType: 'JSON',
-      success: (data) => {
+      success: () => {
           $.ajax({
           type: 'GET',
           url: 'http://localhost:1128/repos',
@@ -37,7 +37,7 @@ class App extends React.Component {
           error: (err) => {console.log(err)}
         });
       },
-      error: (err) => {
+      error: () => {
           $.ajax({
           type: 'GET',
           url: 'http://localhost:1128/repos',
