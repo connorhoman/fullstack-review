@@ -25,6 +25,7 @@ class Search extends React.Component {
     <div className='search'>
       <input className='search' placeholder='Enter a GitHub username' value={this.state.terms} onChange={this.onChange}/>       
       <button className='search' onClick={this.search}> Add Repos </button>
+      <br></br>
     </div>) 
   }
 }
